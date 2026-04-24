@@ -86,3 +86,16 @@ function cardCounter(card) {
  let year = 2024;
  let result = isLeapYear(year);
  console.log(result);
+
+// To truncate a string using function
+function truncateString(str1, num){
+  if(str1.length > num){
+    return str1.slice(0,num) + "...";
+  }
+  else {
+    return str1;
+  }
+}
+let number = "A-tisket a-tasket A green and yellow basket".length;
+let myString = "A-tisket a-tasket A green and yellow basket"
+console.log(truncateString(myString, number));
