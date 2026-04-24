@@ -99,3 +99,11 @@ function truncateString(str1, num){
 let number = "A-tisket a-tasket A green and yellow basket".length;
 let myString = "A-tisket a-tasket A green and yellow basket"
 console.log(truncateString(myString, number));
+
+// Arrow function
+const calculateArea = (length, width) => {
+  const area = length * width;
+  return `The area of the rectangle is ${area} square units.`;
+};
+
+console.log(calculateArea(5, 10)); // Output: "The area of the rectangle is 50 square units."
