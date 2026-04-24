@@ -41,3 +41,29 @@ function getLoanMessage(annualIncome, creditScore) {
     return "You don't qualify for any loans."
   }
 }
+
+//Build a Card Counting Assistant
+let count = 0;
+
+function cardCounter(card) {
+  // Increase count for low cards
+  if (card >= 2 && card <= 6) {
+    count++;
+  }
+  // Decrease count for high cards
+  else if (
+    card === 10 ||
+    card === "J" ||
+    card === "Q" ||
+    card === "K" ||
+    card === "A"
+  ) {
+    count--;
+  }
+  // 7, 8, 9 → no change
+
+  // Decide action
+  let decision = count > 0 ? "Bet" : "Hold";
+
+  return count + " " + decision;
+}
