@@ -10,3 +10,12 @@ function maskEmail(email){
 }
 let email = "javidmiakhil63@gmail.com";
 console.log(maskEmail(email));
+
+// To convert Celsuis to Fehrenheit using functions
+function convertCtoF(temperatureInCelsius){
+  let temperatureInFahrenheit = temperatureInCelsius * (9/5)+32;
+  return temperatureInFahrenheit;
+
+}
+ 
+ let temperatureInCelsius = convertCtoF(0);
