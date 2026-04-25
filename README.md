@@ -32,7 +32,7 @@ Each folder represents a separate project:
 
 To explore the projects locally:
 
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/MohammadJavid07/My-JavaScript-Learning-Practices.git
 
 Then:
 
@@ -57,5 +57,5 @@ Start working with frameworks like React
 Build full-stack applications
 Contribute to open-source projects
 🔗 Connect with Me
-
-(You can add your GitHub profile link here later)
+javidmiakhil63@gmail.com
+(www.https//github.com/MohammadJavid07)
