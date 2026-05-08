@@ -135,3 +135,87 @@ else if(strokes >= par+3){
 }
 }
 console.log(golfScore(3,1));
+
+function normalizeUnits(manifest) {
+  // Create a copy of the original object
+  const normalizedManifest = { ...manifest };
+
+  // Convert pounds to kilograms if needed
+  if (normalizedManifest.unit === "lb") {
+    normalizedManifest.weight = normalizedManifest.weight * 0.45;
+    normalizedManifest.unit = "kg";
+  }
+
+  return normalizedManifest;
+}
+
+function validateManifest(manifest) {
+  // Create a new object for validation errors
+  const errors = {};
+
+  // containerId validation
+  if (!("containerId" in manifest)) {
+    errors.containerId = "Missing";
+  } else if (
+    !Number.isInteger(manifest.containerId) ||
+    manifest.containerId <= 0
+  ) {
+    errors.containerId = "Invalid";
+  }
+
+  // destination validation
+  if (!("destination" in manifest)) {
+    errors.destination = "Missing";
+  } else if (
+    typeof manifest.destination !== "string" ||
+    manifest.destination.trim() === ""
+  ) {
+    errors.destination = "Invalid";
+  }
+
+  // weight validation
+  if (!("weight" in manifest)) {
+    errors.weight = "Missing";
+  } else if (
+    typeof manifest.weight !== "number" ||
+    Number.isNaN(manifest.weight) ||
+    manifest.weight <= 0
+  ) {
+    errors.weight = "Invalid";
+  }
+
+  // unit validation
+  if (!("unit" in manifest)) {
+    errors.unit = "Missing";
+  } else if (
+    manifest.unit !== "kg" &&
+    manifest.unit !== "lb"
+  ) {
+    errors.unit = "Invalid";
+  }
+
+  // hazmat validation
+  if (!("hazmat" in manifest)) {
+    errors.hazmat = "Missing";
+  } else if (typeof manifest.hazmat !== "boolean") {
+    errors.hazmat = "Invalid";
+  }
+
+  return errors;
+}
+
+function processManifest(manifest) {
+  const validationResult = validateManifest(manifest);
+
+  // Check if there are validation errors
+  if (Object.keys(validationResult).length === 0) {
+    console.log(`Validation success: ${manifest.containerId}`);
+
+    const normalized = normalizeUnits(manifest);
+
+    console.log(`Total weight: ${normalized.weight} kg`);
+  } else {
+    console.log(`Validation error: ${manifest.containerId}`);
+    console.log(validationResult);
+  }
+}
